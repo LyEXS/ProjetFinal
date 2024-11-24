@@ -1,0 +1,94 @@
+/* Fond général de l'application - lumineux avec des accents modernes */
+.root {
+    -fx-background-color: #F9F9F9; /* Fond clair et chaleureux */
+    -fx-font-family: 'Segoe UI', sans-serif; /* Police moderne */
+    -fx-font-size: 14px; /* Taille de police légèrement plus grande */
+    -fx-text-fill: #444444; /* Texte gris foncé pour une bonne lisibilité */
+}
+
+/* Style des boutons - modernes avec une touche de rouge */
+.button {
+    -fx-background-color: #FFFFFF; /* Fond blanc propre */
+    -fx-text-fill: #D32F2F; /* Texte rouge subtil */
+    -fx-font-size: 14px; /* Taille de police standard */
+    -fx-padding: 8px 16px; /* Espacement bien défini */
+    -fx-background-radius: 5px; /* Coins arrondis pour plus de douceur */
+    -fx-border-color: #E0E0E0; /* Bordure gris clair */
+    -fx-border-width: 1px;
+    -fx-transition: background-color 0.3s, transform 0.2s; /* Transitions fluides */
+}
+
+/* Effet au survol des boutons - rouge clair et élégant */
+.button:hover {
+    -fx-background-color: #FFD5D5; /* Rouge clair et apaisant */
+    -fx-text-fill: #B71C1C; /* Texte rouge foncé */
+    -fx-transform: scale(1.03); /* Effet de zoom subtil */
+    -fx-cursor: pointer; /* Indicateur de clic */
+}
+
+/* Champs de texte - épurés et lisibles */
+.text-field, .password-field {
+    -fx-background-color: #FFFFFF; /* Fond blanc */
+    -fx-padding: 8px 12px; /* Espacement pour un champ bien défini */
+    -fx-border-color: #CCCCCC; /* Bordure discrète et élégante */
+    -fx-border-radius: 4px; /* Coins légèrement arrondis */
+    -fx-font-size: 14px; /* Taille de police standard */
+    -fx-text-fill: #444444; /* Texte gris foncé */
+}
+
+/* Focus des champs de texte - rouge discret */
+.text-field:focused, .password-field:focused {
+    -fx-border-color: #D32F2F; /* Bordure rouge au focus */
+    -fx-background-color: #FFF5F5; /* Fond légèrement teinté */
+}
+
+/* Labels - clairs et professionnels */
+.label {
+    -fx-text-fill: #444444; /* Texte gris foncé */
+    -fx-font-size: 15px; /* Taille de police légèrement plus grande */
+    -fx-font-weight: bold; /* Style en gras pour mettre en valeur */
+}
+
+/* TableView - moderne et agréable */
+.table-view {
+    -fx-background-color: #FFFFFF; /* Fond blanc pour la table */
+    -fx-font-size: 14px; /* Police standard */
+    -fx-border-color: #E0E0E0; /* Bordure grise légère */
+    -fx-padding: 0;
+    -fx-border-width: 1px;
+}
+
+/* Effet au survol des lignes de la table */
+.table-row-cell:hover {
+    -fx-background-color: #FFF5F5; /* Rouge pâle et apaisant */
+}
+
+/* En-têtes de la TableView - professionnels */
+.table-view .column-header {
+    -fx-background-color: #FFD5D5; /* Fond rouge clair */
+    -fx-font-size: 15px; /* Police légèrement plus grande */
+    -fx-text-fill: #B71C1C; /* Texte rouge foncé */
+    -fx-font-weight: bold;
+    -fx-padding: 10px;
+}
+
+/* Cellules de la TableView - sobres et élégantes */
+.table-cell {
+    -fx-padding: 8px 12px; /* Espacement défini pour plus de lisibilité */
+    -fx-font-size: 14px; /* Taille de police standard */
+    -fx-text-fill: #444444; /* Texte gris foncé */
+}
+
+/* Scrollbars - discrètes et modernes */
+.scroll-bar {
+    -fx-background-color: #F5F5F5; /* Fond gris clair */
+}
+
+.scroll-bar .thumb {
+    -fx-background-color: #D32F2F; /* Rouge pour la barre de défilement */
+}
+
+/* Pas d'ombre pour garder un look épuré */
+.button, .text-field, .password-field {
+    -fx-effect: none; /* Suppression des ombres */
+}
