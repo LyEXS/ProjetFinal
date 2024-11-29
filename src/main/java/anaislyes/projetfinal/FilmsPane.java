@@ -3,6 +3,7 @@ package anaislyes.projetfinal;
 import Objects.Film;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.geometry.Pos;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.BorderPane;
@@ -40,6 +41,9 @@ public class FilmsPane extends BorderPane {
         dureeFilm.setCellValueFactory(new PropertyValueFactory<>("dureeFilm"));
 
         tableView.getColumns().addAll(titreFilm, nomExp, genre, idFilm, dureeFilm);
+       
+        tableView.setMaxWidth(1000);
+        tableView.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
 
         // Charger les données depuis la base
         chargerDonneesDepuisBase();
@@ -58,6 +62,7 @@ public class FilmsPane extends BorderPane {
         btnSupprimer.setOnAction(e -> supprimerFilm());
 
         buttonsBar.getChildren().addAll(btnAjouter, btnModifier, btnSupprimer);
+        buttonsBar.setAlignment(Pos.CENTER);
 
         // Ajouter les composants à l'interface
         this.setCenter(tableView);

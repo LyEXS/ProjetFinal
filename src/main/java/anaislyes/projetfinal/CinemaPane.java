@@ -4,6 +4,7 @@ import Objects.Cinema;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.geometry.Insets;
+import javafx.geometry.Pos;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.*;
@@ -31,6 +32,10 @@ public class CinemaPane extends BorderPane {
 
         tableView.getColumns().addAll(numCinemaColumn, nomCinemaColumn, adresseCinemaColumn);
         tableView.setItems(data);
+        tableView.setMaxWidth(1000);
+        tableView.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
+
+
 
         // Charger les données depuis la base de données
         chargerDonneesDepuisBase();
@@ -44,6 +49,7 @@ public class CinemaPane extends BorderPane {
         Button deleteButton = new Button("Supprimer");
 
         buttonBox.getChildren().addAll(addButton, editButton, deleteButton);
+        buttonBox.setAlignment(Pos.CENTER);
 
         setCenter(tableView);
         setBottom(buttonBox);
