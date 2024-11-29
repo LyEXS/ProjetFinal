@@ -81,13 +81,13 @@ public class CinemaApp extends Application {
         btnSalles.setMinWidth(93);
         btnSalles.setPrefHeight(50);
         btnFilms.setMinWidth(93);
-        btnFilms.setPrefHeight(50);
+        btnFilms.setPrefHeight(50);/*
         String videoPath = getClass().getResource("/Media/Video2.mp4").toExternalForm();        Media media = new Media(videoPath);
         MediaPlayer mediaPlayer = new MediaPlayer(media);
         MediaView mediaView = new MediaView(mediaPlayer);
         mediaView.setPreserveRatio(true); // Maintenir les proportions de la vidéo
         mediaView.setFitWidth(2000); // Largeur maximum souhaitée (modifiez selon vos besoins)
-        mediaView.setFitHeight(1080);
+        mediaView.setFitHeight(1080);*/
 
 
         // Créer un texte overlay bien visible
@@ -102,14 +102,16 @@ public class CinemaApp extends Application {
 
         // Créer le layout principal
         BorderPane root = new BorderPane();
-
+        /*
         mediaPlayer.play();
         mediaPlayer.setCycleCount(MediaPlayer.INDEFINITE);
-        root.setLeft(toolBarContainer); // Placer la ToolBar et le bookmark avec le bouton toggle à gauche
         root.setCenter(mediaView);
+        */
+        root.setLeft(toolBarContainer); // Placer la ToolBar et le bookmark avec le bouton toggle à gauche
+        
         // Conteneur de contenu dynamique
         StackPane dynamicContent = new StackPane();
-        dynamicContent.getChildren().addAll(mediaView, textOverlay);
+       
         StackPane.setAlignment(textOverlay, Pos.CENTER);
         root.setCenter(dynamicContent);
 
