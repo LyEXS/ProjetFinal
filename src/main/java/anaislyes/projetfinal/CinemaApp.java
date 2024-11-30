@@ -132,7 +132,6 @@ public class CinemaApp extends Application {
                 @Override
                 protected CinemaPane call() throws Exception {
                     
-                    Thread.sleep(200);
 
                
                     return new CinemaPane(); // Remplacez par votre implémentation réelle
@@ -171,7 +170,6 @@ public class CinemaApp extends Application {
             Task<SallesPane> loadSallesPaneTask = new Task<>() {
                 @Override
                 protected SallesPane call() throws Exception {
-                    Thread.sleep(200); // Simulation de délai
                     return new SallesPane(); // Remplacez par l'implémentation réelle
                 }
             };
