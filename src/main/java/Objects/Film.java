@@ -20,26 +20,22 @@ public class Film {
     private final StringProperty dureeFilm;
     private final StringProperty nomExpo;
     private final StringProperty genre;
+    private final StringProperty Annee; // Add image bytes property
     private final ObjectProperty<Image> image; // Add image property
 
     // Default constructor
-    public Film() {
-        this.idFilm = new SimpleIntegerProperty();
-        this.titreFilm = new SimpleStringProperty();
-        this.dureeFilm = new SimpleStringProperty();
-        this.nomExpo = new SimpleStringProperty();
-        this.genre = new SimpleStringProperty();
-        this.image = new SimpleObjectProperty<>(); // Initialize image property
-    }
+    
 
     // Constructor with parameters
-    public Film(int idFilm, String titreFilm, String dureeFilm, String nomExpo, String genre, Image image) {
+    public Film(int idFilm, String titreFilm, String dureeFilm, String nomExpo, String genre,String Annee, Image image) {
         this.idFilm = new SimpleIntegerProperty(idFilm);
         this.titreFilm = new SimpleStringProperty(titreFilm);
         this.dureeFilm = new SimpleStringProperty(dureeFilm);
         this.nomExpo = new SimpleStringProperty(nomExpo);
         this.genre = new SimpleStringProperty(genre);
-        this.image = new SimpleObjectProperty<>(image); // Initialize image property
+        this.image = new SimpleObjectProperty<>(image);
+        this.Annee = new SimpleStringProperty(Annee);
+        // Initialize image property
     }
 
     // Getters and setters with properties
@@ -101,6 +97,17 @@ public class Film {
 
     public StringProperty genreProperty() {
         return genre;
+    }
+    
+    public String getAnnee() {
+        return Annee.get();
+    }
+    
+    public void setAnnee(String Annee) {
+        this.Annee.set(Annee);
+    }
+    public StringProperty AnneeProperty() {
+    	return Annee;
     }
 
     // Getter and setter for image

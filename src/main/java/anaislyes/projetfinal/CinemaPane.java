@@ -7,13 +7,23 @@ import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.KeyCode;
 import javafx.scene.layout.*;
 import java.sql.*;
+
+import com.jfoenix.controls.JFXButton;
+import com.jfoenix.controls.JFXTextField;
 
 public class CinemaPane extends BorderPane {
     private static TableView<Cinema> tableView;
     public static ObservableList<Cinema> data;
     private ComboBox<String> villeComboBox;
+    
+    String RessourcePath = "/resources/";
+	String StylePath = "Styles/";
+	//String StylePath = "";
+	//String RessourcePath ="/";
+
 
     public CinemaPane() throws SQLException {
         // Initialiser les données
@@ -44,15 +54,48 @@ public class CinemaPane extends BorderPane {
         HBox buttonBox = new HBox(10);
         buttonBox.setPadding(new Insets(10));
 
-        Button addButton = new Button("Ajouter");
-        Button editButton = new Button("Modifier");
-        Button deleteButton = new Button("Supprimer");
+        JFXButton addButton = new JFXButton("Ajouter");
+        JFXButton editButton = new JFXButton("Modifier");
+        JFXButton deleteButton = new JFXButton("Supprimer");
 
         buttonBox.getChildren().addAll(addButton, editButton, deleteButton);
         buttonBox.setAlignment(Pos.CENTER);
-
+        
+        VBox rechercheBox = new VBox(10);
+        JFXButton buttonRechercher = new JFXButton("Rechercher");
+        buttonRechercher.setPrefWidth(140);
+        
+        TextField fieldNomCinema = new TextField();
+        fieldNomCinema.setPromptText("Nom du cinéma");
+        
+        
+        
+        rechercheBox.setPadding(new Insets(10));
+        rechercheBox.getChildren().addAll(fieldNomCinema,buttonRechercher);
         setCenter(tableView);
         setBottom(buttonBox);
+        setLeft(rechercheBox);
+        
+        fieldNomCinema.setOnKeyPressed(e->{
+        		
+           
+                buttonRechercher.fire();
+            }
+        );
+        
+        buttonRechercher.setOnAction(e -> {
+           
+            String nomCinema = fieldNomCinema.getText();
+
+            ObservableList<Cinema> CinemaRechercheList = RechercherDonnes(nomCinema);
+            tableView.setItems(CinemaRechercheList);  // Mettre à jour la table avec les résultats de la recherche
+        });
+
+        
+        
+        
+        
+        
 
         // Actions des boutons
         addButton.setOnAction(e -> {
@@ -100,10 +143,37 @@ public class CinemaPane extends BorderPane {
             showAlert("Erreur", "Impossible de charger les données.");
         }
     }
+    
+    private ObservableList<Cinema> RechercherDonnes(String nomCin) {
+    	ObservableList<Cinema> list = null;
+        try {
+        	list = FXCollections.observableArrayList();
+        	
+        	
+            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/cinemagestion", "root", "");
+            PreparedStatement st = con.prepareStatement("SELECT NumCine, NomCine, AdrsCine FROM Cinema WHERE NomCine LIKE ?");
+            st.setString(1, "%" + nomCin + "%"); // Ajouter les % autour du nom pour permettre la recherche partielle
+
+            ResultSet rs = st.executeQuery();
+
+            while (rs.next()) {
+                int numCinema = rs.getInt("NumCine");
+                String nomCinema = rs.getString("NomCine");
+                String adresseCinema = rs.getString("AdrsCine");
+                list.add(new Cinema(numCinema, nomCinema, adresseCinema));
+            }
+
+            con.close();
+        } catch (SQLException e) {
+            showAlert("Erreur", "Impossible de charger les données.");
+        }
+        return list;
+    }
 
     // Afficher un DialogPane pour ajouter ou modifier un cinéma
     private void afficherDialogCinema(Cinema cinemaExistant) throws SQLException {
         Dialog<Void> dialog = new Dialog<>();
+        
         dialog.setTitle(cinemaExistant == null ? "Ajouter un cinéma" : "Modifier un cinéma");
         dialog.setHeaderText(cinemaExistant == null ? "Ajoutez un nouveau cinéma." : "Modifiez les informations du cinéma.");
 

@@ -1,0 +1,53 @@
+/* Fond gris foncé avec un léger effet de texture */
+
+/* Couleur des textes en bordeaux plus doux pour un contraste agréable */
+.label, .text {
+    -fx-text-fill: #a30000; /* Bordeaux atténué pour plus de lisibilité */
+    -fx-font-family: 'Arial', sans-serif;
+    -fx-font-size: 14px; /* Taille plus petite pour un design plus fluide */
+}
+
+/* Boutons avec un bordeaux plus doux, arrondi et un effet au survol */
+.button {
+    -fx-background-color: #800000; /* Bordeaux intense */
+    -fx-text-fill: white; /* Texte blanc pour contraste */
+    -fx-border-radius: 8px; /* Coins arrondis */
+    -fx-font-weight: bold;
+    -fx-padding: 10px 20px; /* Un peu de padding pour un bouton plus grand */
+    -fx-transition: background-color 0.3s; /* Effet de transition au survol */
+}
+
+.button:hover {
+    -fx-background-color: #a30000; /* Change le fond au survol pour un bordeaux plus clair */
+}
+
+/* Champs de texte avec fond gris foncé et bordure bordeaux discrète */
+.text-field, .text-area {
+    -fx-background-color: #444444; /* Gris foncé légèrement plus clair pour les champs de texte */
+    -fx-text-fill: white; /* Texte blanc pour une meilleure lisibilité */
+    -fx-border-color: #800000; /* Bordure bordeaux */
+    -fx-border-width: 2px; /* Bordure fine mais visible */
+    -fx-border-radius: 5px; /* Coins arrondis pour un aspect moderne */
+    -fx-padding: 5px 10px; /* Espacement interne pour un champ plus grand */
+}
+
+/* Titres en bordeaux avec un effet d'ombrage pour les rendre plus dynamiques */
+.title {
+    -fx-text-fill: #800000; /* Bordeaux */
+    -fx-font-size: 28px; /* Titre plus grand pour plus de présence */
+    -fx-font-weight: bold;
+    -fx-font-family: 'Arial', sans-serif;
+    -fx-text-effect: dropshadow( two-pass-box , rgba(0,0,0,0.6), 4, 0.0 , 0 , 2 ); /* Ombre subtile */
+    -fx-padding: 10px 0;
+}
+
+/* Pour un look plus moderne, ajoutons des styles pour les liens et autres éléments */
+.hyperlink {
+    -fx-text-fill: #800000; /* Bordeaux pour les liens */
+    -fx-font-size: 14px;
+}
+
+.hyperlink:hover {
+    -fx-text-fill: #a30000; /* Lien qui devient plus clair au survol */
+}
+

@@ -11,6 +11,8 @@ import javafx.scene.text.Text;
 
 import java.sql.*;
 
+import com.jfoenix.controls.JFXButton;
+
 public class SallesPane extends BorderPane {
     private TableView<Salle> tableView; // Table pour afficher les salles
     private ObservableList<Salle> sallesList; // Données des salles
@@ -51,6 +53,37 @@ public class SallesPane extends BorderPane {
         editButton = new Button("Modifier");
         deleteButton = new Button("Supprimer");
         
+        TextField IdSalle = new TextField();
+        IdSalle.setPromptText("Numéro de salle");
+        JFXButton rechercher = new JFXButton("Rechercher");
+        VBox rechercheBox = new VBox(10);
+        rechercheBox.getChildren().addAll(IdSalle, rechercher);
+        setLeft(rechercheBox);
+      
+        
+        rechercher.setOnAction(e -> {
+            String idSalle = IdSalle.getText();
+            ObservableList<Salle> Salles = FXCollections.observableArrayList();
+            
+            Salles = rechercherSalle(idSalle);
+            tableView.setItems(Salles);
+        });
+        
+        IdSalle.textProperty().addListener((observable, oldValue, newValue) -> {
+            if (newValue.isEmpty()) {
+                // Si le champ est vide, charger toutes les données
+                chargerDonneesDepuisBase();
+                tableView.setItems(sallesList); // Met à jour la table avec toutes les salles
+            } else {
+                // Si un ID est entré, effectuer une recherche
+                ObservableList<Salle> salles = rechercherSalle(newValue);
+                tableView.setItems(salles);
+            }
+        });
+
+            
+        
+        
         form.getChildren().addAll(addButton, editButton, deleteButton);
         form.setAlignment(Pos.CENTER);
         setCenter(tableView);
@@ -81,7 +114,56 @@ public class SallesPane extends BorderPane {
         deleteButton.setOnAction(e -> supprimerSalle());
     }
 
-    private void afficherDialogSalle(Salle salleExistant) throws SQLException {
+    private ObservableList<Salle> rechercherSalle(String idSalle) {
+    	ObservableList<Salle> Salles = FXCollections.observableArrayList();
+    	
+    	
+        try {
+            // Liste observable pour stocker les salles récupérées
+         
+
+            // Connexion à la base de données
+            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/cinemagestion", "root", "");
+
+            // Requête SQL pour récupérer les informations de la salle et son cinéma
+            String query = "SELECT s.NumSalle, s.Capacite, c.NomCine " +
+                           "FROM salle s " +
+                           "JOIN cinema c ON s.NumCine = c.NumCine " +
+                           "WHERE s.NumSalle LIKE ?";
+            PreparedStatement ps = con.prepareStatement(query);
+            ps.setInt(1, Integer.parseInt(idSalle));
+
+            // Exécution de la requête
+            ResultSet rs = ps.executeQuery();
+
+            // Parcours des résultats
+            while (rs.next()) {
+                int numSalle = rs.getInt("NumSalle");
+                int capacite = rs.getInt("Capacite");
+                String nomCinema = rs.getString("NomCine");
+
+                // Ajouter les informations à la liste
+                Salles.add(new Salle(nomCinema, String.valueOf(numSalle), capacite));
+            }
+
+            // Fermeture des ressources
+            rs.close();
+            ps.close();
+            con.close();
+
+            // Mettre à jour le TableView
+          
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return Salles ;
+    }
+
+
+
+
+	private void afficherDialogSalle(Salle salleExistant) throws SQLException {
         Dialog<Void> dialog = new Dialog<>();
         dialog.setTitle(salleExistant == null ? "Ajouter une Salle" : "Modifier une Salle");
         dialog.setHeaderText(salleExistant == null ? "Ajoutez une nouvelle salle." : "Modifiez les informations de la salle.");
@@ -223,6 +305,9 @@ public class SallesPane extends BorderPane {
             showAlert("Erreur", "Erreur lors du chargement des données.");
         }
     }
+   
+
+
 
     private void showAlert(String title, String message) {
         Alert alert = new Alert(Alert.AlertType.ERROR);

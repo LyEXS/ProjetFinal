@@ -1,0 +1,356 @@
+/* Style global : fond sombre et police moderne */
+.root {
+	 
+  
+/* Chemin relatif */
+  
+    -fx-font-family: 'SF Pro Display', sans-serif; /* Police moderne */
+    -fx-font-size: 14px; /* Taille de police */
+    -fx-text-fill: #E5E5E5; /* Texte clair */
+}
+
+/* Liste des dossiers (section de gauche) */
+.tree-view, .list-view {
+    -fx-background-color: #1F1F1F; /* Fond plus sombre des dossiers */
+    -fx-border-color: #2A2A2A; /* Bordure subtile */
+    -fx-border-radius: 12px; /* Coins plus arrondis */
+    -fx-padding: 8px;
+}
+
+.tree-view .tree-cell, .list-view .list-cell {
+    -fx-background-color: transparent;
+    -fx-text-fill: #E5E5E5; /* Texte clair */
+    -fx-padding: 6px 10px;
+}
+
+.tree-view .tree-cell:hover, .list-view .list-cell:hover {
+    -fx-background-color: #2A2A2A; /* Survol légèrement plus sombre */
+    -fx-border-radius: 6px;
+}
+
+/* Section sélectionnée */
+.tree-view .tree-cell:selected, .list-view .list-cell:selected {
+    -fx-background-color: #3A3A3A; /* Couleur de sélection plus sombre */
+    -fx-text-fill: #FFFFFF; /* Texte blanc */
+}
+.border-pane{
+	 -fx-background-image: url('/images/Background.jpg');
+}
+
+.dialog-pane > .header {
+    -fx-background-color: #4CAF50; /* Couleur de fond de l'en-tête */
+    -fx-text-fill: white; /* Couleur du texte */
+    -fx-font-size: 16px; /* Taille de la police */
+    -fx-font-weight: bold; /* Police en gras */
+    -fx-padding: 10 20 10 20; /* Espacement interne */
+    -fx-alignment: center; /* Centrer le texte */
+}
+
+/* Style de la zone de contenu du DialogPane */
+.dialog-pane > .content {
+    -fx-padding: 20px; /* Espacement interne */
+    -fx-font-size: 14px; /* Taille de la police */
+    -fx-text-fill: #333; /* Couleur du texte */
+}
+
+
+/* Boutons modernes */
+/* Boutons modernes */
+.button {
+    -fx-background-color: #141414; /* Fond sombre */
+    -fx-text-fill: #E5E5E5; /* Texte clair */
+    -fx-font-family: 'Roboto', sans-serif; /* Police moderne */
+    
+    -fx-font-size: 14px; /* Taille légèrement réduite pour un aspect dense */
+    -fx-padding: 8px 16px; /* Espacement interne pour les boutons */
+    -fx-transition: background-color 0.3s, transform 0.2s;
+}
+
+
+/* Effet au survol des boutons */
+.button:hover {
+    -fx-background-color: #44041c; /* Fond rouge au survol */
+    -fx-text-fill: #FFFFFF;
+}
+
+
+/* Effet lorsqu'il est pressé */
+.button:pressed {
+    -fx-background-color: #5c162e; /* Fond rouge plus marqué lorsqu'il est cliqué */
+}
+
+
+/* TextField et PasswordField */
+/* TextField et PasswordField - version discrète sans fond et avec animation */
+/* TextField et PasswordField - sans fond et avec une ligne animée en bas */
+.text-field, .password-field {
+    -fx-background-color: transparent; /* Aucun fond */
+    -fx-text-fill: #B0B0B0; /* Texte gris clair */
+    -fx-border-color: transparent; /* Pas de bordure au départ */
+    -fx-font-size: 14px; /* Taille de police */
+    -fx-padding: 10px 8px 2px 8px; /* Padding pour laisser de la place à la ligne animée */
+    -fx-border-radius: 0px; /* Aucun arrondi */
+    -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.3), 3, 0.5, 0, 1); /* Ombre discrète */
+}
+
+/* Ligne animée en bas lorsqu'il est en focus */
+.text-field:focused, .password-field:focused {
+    -fx-border-color: transparent; /* Pas de bordure partout sauf en bas */
+    -fx-padding: 10px 8px 2px 8px; /* Garde de l'espace en bas */
+}
+
+/* Ajouter la ligne animée en bas */
+.text-field:focused, .password-field:focused {
+    -fx-border-width: 0 0 2px 0; /* Bordure en bas uniquement */
+    -fx-border-color: #0A84FF; /* Couleur bleue de la ligne en bas */
+    -fx-transition: border-color 0.3s ease; /* Animation de la ligne */
+}
+
+/* Effet de la ligne au survol */
+.text-field:hover, .password-field:hover {
+    -fx-border-width: 0 0 1px 0; /* Ligne fine au survol */
+    -fx-border-color: #370a1c; /* Ligne gris clair */
+}
+
+/* Texte blanc lorsque le champ est en focus */
+.text-field:focused .text, .password-field:focused .text {
+    -fx-text-fill: #FFFFFF; /* Texte blanc lorsqu'il est en focus */
+}
+
+/* Texte gris clair lorsqu'il n'est pas en focus */
+.text-field .text, .password-field .text {
+    -fx-text-fill: #B0B0B0; /* Texte gris discret lorsqu'il n'est pas en focus */
+}
+
+/* Effet de clic - surligner la ligne en bas */
+.text-field:pressed, .password-field:pressed {
+    -fx-border-color: #0A84FF; /* Couleur bleue de la ligne en bas */
+    -fx-border-width: 0 0 2px 0; /* Bordure en bas */
+}
+
+
+
+/* Labels */
+.label {
+    -fx-text-fill: #E5E5E5; /* Texte clair */
+    -fx-font-size: 14px;
+}
+
+/* TableView - style général */
+.table-view {
+    -fx-background-color: #141414; /* Fond sombre de la table */
+    -fx-border-width: 0px; /* Supprimer la bordure générale */
+    -fx-min-width: 800px;
+    -fx-border-radius: 20px;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.5), 30, 0, 0, 0); /* Effet de drop shadow */
+    -fx-padding: 10px; /* Ajout de padding pour éviter le recouvrement */
+    -fx-margin-top: 10px;
+}
+
+
+/* En-têtes de colonnes */
+.table-view .column-header {
+    -fx-background-color: #141414; /* Fond des en-têtes plus sombre */
+    -fx-text-fill: #E5E5E5; /* Texte clair */
+    -fx-border-color: #2A2A2A; /* Couleur des bordures */
+    -fx-border-width: 0 0 1px 1px; /* Bordure en bas et sur les côtés */
+    -fx-font-weight: bold;
+    -fx-padding: 10px; /* Espacement augmenté */
+    -fx-border-radius: 2px;
+}
+
+/* Fond des lignes - Sans bordure */
+.table-row-cell {
+    -fx-background-color: #141414; /* Fond des lignes plus sombre */
+    -fx-border-color: transparent; /* Supprimer les bordures des lignes */
+    -fx-border-width: 0; /* Aucun bord autour des cellules */
+    -fx-text-fill: #E5E5E5; /* Texte clair */
+    -fx-border-radius: 0px; /* Aucune bordure arrondie */
+}
+
+/* Ligne survolée */
+.table-row-cell:hover {
+    -fx-background-color: #44041c; /* Fond au survol */
+}
+
+/* Ligne sélectionnée */
+.table-row-cell:selected {
+    -fx-background-color: #44041c; /* Fond de la ligne sélectionnée */
+    -fx-text-fill: #FFFFFF; /* Texte blanc */
+}
+
+/* Cellules de la table */
+.table-cell {
+    -fx-padding: 8px 12px;
+    -fx-text-fill: #E5E5E5; /* Texte clair */
+    -fx-font-size: 14px; /* Taille de police */
+    -fx-border-color: transparent; /* Supprimer la bordure */
+    -fx-border-radius: 6px; /* Bordures arrondies */
+}
+
+/* Cellules vides */
+.table-cell:empty {
+    -fx-background-color: transparent;
+    -fx-border-width: 0;
+}
+
+/* Barre de défilement */
+.scroll-bar {
+    -fx-background-color: #121212; /* Fond sombre */
+}
+
+.scroll-bar .thumb {
+    -fx-background-color: #4C4C4C; /* Barre de défilement plus sombre */
+    -fx-border-radius: 6px; /* Coins arrondis sur la barre de défilement */
+}
+
+.scroll-bar .thumb:hover {
+    -fx-background-color: #0A84FF; /* Couleur plus vive au survol */
+}
+
+/* Zones de recherche */
+.text-field:focused {
+    -fx-border-color: #4C4C4C;
+}
+
+/* Bordures des conteneurs principaux */
+.border-pane {
+    -fx-background-color: #1F1F1F;
+    -fx-border-color: #2A2A2A;
+    -fx-border-width: 1px;
+}
+
+/* Style général de la ToolBar */
+.tool-bar {
+    -fx-background-color: #141414; /* Fond sombre */
+    -fx-border-color: #2A2A2A; /* Bordure discrète */
+    -fx-border-width: 0 0 1px 0; /* Bordure uniquement en bas */
+}
+
+/* Style des boutons dans la ToolBar */
+.tool-bar .button {
+    
+    -fx-background-color: #141414; /* Fond sombre */
+    -fx-text-fill: #E5E5E5; /* Texte clair */
+    -fx-font-family: 'Roboto', sans-serif; /* Police moderne */
+   /* Style de police (normal, medium, bold) */
+    -fx-font-size: 14px; /* Taille légèrement réduite pour un aspect dense */
+    -fx-padding: 8px 16px; /* Espacement interne pour les boutons */
+    -fx-transition: background-color 0.3s, transform 0.2s;
+}
+
+
+
+/* Effet au survol des boutons */
+.tool-bar .button:hover {
+    -fx-background-color: #44041c;
+}
+
+/* Effet lors du clic des boutons */
+.tool-bar .button:pressed {
+    -fx-background-color: #370a1c;
+}
+/* Style général pour ComboBox */
+/* Style général pour ComboBox */
+/* Style général pour ComboBox */
+.combo-box {
+    -fx-background-color: #1F1F1F; /* Fond sombre */
+    -fx-text-fill: #E5E5E5; /* Texte clair */
+    -fx-border-color: #2A2A2A; /* Bordure subtile */
+    -fx-border-radius: 8px; /* Coins arrondis */
+    -fx-padding: 5px; /* Réduire le padding interne */
+    -fx-pref-width: 200px; /* Largeur préférée de la ComboBox */
+    -fx-max-width: 200px; /* Largeur maximale */
+}
+
+/* ComboBox lorsque le champ est en focus */
+.combo-box:focused {
+    -fx-background-color: #2A2A2A; /* Fond plus clair lorsqu'il est en focus */
+    -fx-border-color: #0A84FF; /* Bordure bleue claire */
+}
+
+/* Style des éléments déroulés dans le ComboBox */
+.combo-box .list-cell {
+    -fx-background-color: #1F1F1F; /* Fond sombre pour chaque élément */
+    -fx-text-fill: #E5E5E5; /* Texte clair */
+    -fx-padding: 8px;
+}
+
+/* Effet sur survol des éléments du ComboBox */
+.combo-box .list-cell:hover {
+    -fx-background-color: #2A2A2A; /* Fond légèrement plus clair au survol */
+    -fx-text-fill: #FFFFFF; /* Texte blanc au survol */
+}
+
+/* Combobox sélectionné */
+.combo-box .list-cell:selected {
+    -fx-background-color: transparent; /* Enlève le fond rouge, laisse l'élément sélectionné avec fond transparent */
+    -fx-text-fill: #FFFFFF; /* Texte blanc */
+}
+
+/* Flèche déroulante */
+.combo-box .arrow {
+    -fx-background-color: #2A2A2A; /* Fond sombre pour la flèche */
+    -fx-background-radius: 50%; /* Coins arrondis pour la flèche */
+}
+ 
+/* Style pour le DatePicker */
+/* Style pour le DatePicker */
+/* Style général du DatePicker */
+.date-picker {
+    -fx-background-color: #1F1F1F; /* Fond sombre */
+    -fx-text-fill: #E5E5E5; /* Texte clair */
+    -fx-border-color: #2A2A2A; /* Bordure subtile */
+    -fx-border-radius: 8px; /* Coins arrondis */
+    -fx-padding: 5px; /* Réduire le padding interne */
+    -fx-pref-width: 150px; /* Largeur préférée du DatePicker */
+}
+
+/* Lorsque le DatePicker est en focus */
+.date-picker:focused {
+    -fx-background-color: #2A2A2A; /* Fond plus clair lorsqu'il est en focus */
+    -fx-border-color: #0A84FF; /* Bordure bleue claire */
+}
+
+/* Style de la popup de DatePicker (calendrier) */
+.date-picker .popup {
+    -fx-background-color: #121212; /* Fond sombre pour le calendrier */
+    -fx-border-color: #2A2A2A; /* Bordure subtile */
+    -fx-border-radius: 8px; /* Coins arrondis pour la popup */
+}
+
+/* Style de la grille du calendrier */
+.calendar-grid {
+    -fx-background-color: #7C162E; /* Fond bleu pour la grille */
+}
+
+/* Style pour les jours dans la popup du DatePicker */
+.date-picker .day-cell {
+    -fx-background-color: #1F1F1F; /* Fond sombre pour chaque jour */
+    -fx-text-fill: #E5E5E5; /* Texte clair */
+}
+
+/* Effet au survol d'un jour dans la popup */
+.date-picker .day-cell:hover {
+    -fx-background-color: #2A2A2A; /* Fond plus clair au survol d'un jour */
+}
+
+/* Effet lors de la sélection d'un jour */
+.date-picker .day-cell:selected {
+    -fx-background-color: #0A84FF; /* Fond bleu lors de la sélection d'une date */
+    -fx-text-fill: #FFFFFF; /* Texte blanc */
+}
+
+/* Style du champ texte dans le DatePicker */
+.date-picker > .text-field {
+    -fx-text-fill: white; /* Texte blanc dans le champ de texte du DatePicker */
+}
+
+/* Style du panneau mois-année dans la popup */
+.date-picker-popup > .month-year-pane {
+    -fx-base: #1d1d1d; /* Fond sombre pour le panneau mois-année */
+    -fx-mark-highlight-color: -fx-light-text-color; /* Couleur d'accentuation de la sélection */
+}
+
+
+
